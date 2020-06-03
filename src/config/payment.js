@@ -19,16 +19,21 @@ export default class Payment extends Component {
         return stripe
           .paymentRequestWithCardForm()
           .then(stripeTokenInfo => {
-            return doPayment(50000, stripeTokenInfo.tokenId);
+            console.log("AMOUNT IN PAYMENT :  " + this.props.totalAmount);
+            return doPayment(this.props.totalAmount, stripeTokenInfo.tokenId,this.props.customerId);
           })
           .then(() => {
             console.warn('Payment succeeded!');
+            this.props.invoice();
+
+            
           })
           .catch(error => {
             console.warn('Payment failed', { error });
           })
           .finally(() => {
             this.setState({ isPaymentPending: false });
+            
           });
       };
   

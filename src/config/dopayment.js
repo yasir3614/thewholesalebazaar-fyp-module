@@ -4,10 +4,21 @@ import api from './api'
 var postRoute = api + "/doPayment";
 console.log(postRoute)
 
-export const doPayment = (amount, tokenId, accessToken) => {
+export const doPayment = (amount, tokenId,userEmail) => {
+  console.log("Amount: " + amount);
+  console.log("EMAIL OF CUSTOMER IN DOPAymet.js: " + userEmail);
+  console.log("EMAIL OF CUSTOMER IN DOPAymet.js: " + userEmail);
+  console.log("EMAIL OF CUSTOMER IN DOPAymet.js: " + userEmail);
+  console.log("EMAIL OF CUSTOMER IN DOPAymet.js: " + userEmail);
+  console.log("EMAIL OF CUSTOMER IN DOPAymet.js: " + userEmail);
+  console.log("EMAIL OF CUSTOMER IN DOPAymet.js: " + userEmail);
+  console.log("EMAIL OF CUSTOMER IN DOPAymet.js: " + userEmail);
+
+
   const body = {
     amount: amount,
     tokenId: tokenId,
+    email: userEmail
   };
   const headers = {
     'Content-Type': 'application/json',

@@ -17,6 +17,12 @@ import { ScrollView } from 'react-native';
 import firebase from '../../config/firebase';
 import api from '../../config/api';
 import Payment from '../../config/payment';
+import stripe from 'tipsi-stripe';
+import { doPayment } from '../../config/dopayment';
+
+stripe.setOptions({
+	publishableKey: 'pk_test_mDX84SFtQCTyEpmwSndoQezx00tVCxtOLX',
+  });
 
 class ProductCheckoutScreen extends Component {
 	state = {
@@ -31,8 +37,61 @@ class ProductCheckoutScreen extends Component {
 		totalprice: '',
 		loggedInId: '',
 		modalVisible: false,
-		isConfirmDisable: false
+		isConfirmDisable: false,
+		showConfirmButton:"block",
+		isPaymentPending: false
 	};
+
+	getEmail = (user_id) => {
+		var returnEmail = "NONE";
+		firebase.database().ref('Users/' + user_id + '/').on('value', (snapshot) => {
+			var user = snapshot.val();
+			//   email = retailer.email;
+			console.log("_~~~~~~~~~~~~~~~~~~~~~_~~~~~~~~~~~~~~~~~~~~~~~~_~~~~~~~~~~~~~~~~~~~~~`")
+			console.log(user.email);
+			returnEmail = user.email;
+		});
+
+		return returnEmail;
+	};
+
+	requestPayment = () => {
+        this.setState({ isPaymentPending: true });
+        return stripe
+          .paymentRequestWithCardForm()
+          .then(stripeTokenInfo => {
+			let item = this.props.navigation.getParam('item', 'not valid');
+			let quantity = this.props.navigation.getParam('quantity', 1);
+			var totalAmount = item.item.price * quantity
+			console.log(totalAmount)
+			console.log("AMOUNT IN REQUEST PAYMENT :  "  + totalAmount);
+
+			console.log(this.state.loggedInId);
+			var userEmail = this.getEmail(this.state.loggedInId);
+			console.log("EMAIL IN PRODUCY CHEKCOUT : " + userEmail);
+            return doPayment(totalAmount, stripeTokenInfo.tokenId,userEmail);
+          })
+          .then(() => {
+			console.warn('Payment succeeded!');
+			
+            this.addInvoice();
+
+            
+          })
+          .catch(error => {
+			console.warn('Payment failed', { error });
+			
+
+          })
+          .finally(() => {
+            this.setState({ isPaymentPending: false });
+            
+          });
+      };
+  
+
+
+
 	componentWillMount() {
 		this._retrieveData();
 	}
@@ -100,6 +159,8 @@ class ProductCheckoutScreen extends Component {
 			});
 	}
 	addInvoice = () => {
+		this.setState({modalVisible:true});
+		
 		let item = this.props.navigation.getParam('item', 'not valid');
 		let quantity = this.props.navigation.getParam('quantity', 1);
 
@@ -183,7 +244,6 @@ class ProductCheckoutScreen extends Component {
 			this.setState({
 				paymentmode: value,
 				modalVisible: false
-
 			});
 		}
 	};
@@ -249,19 +309,24 @@ class ProductCheckoutScreen extends Component {
 					/>
 				</View>
 
-				{this.state.modalVisible ?  (
-					<View>
-						
-					<Payment/> 
-				</View>
-				) : (null)}
-				
+				{this.state.modalVisible ? (
+					   <View style={styles.paymentStyle}>
+					   <Button
+						 title="Make a payment"
+						 onPress={this.requestPayment}
+						 disabled={this.state.isPaymentPending}
+					   />
+					 </View>
+				) : (
 
-					<View hide={true}>
+
+					<View>
 					<TouchableOpacity onPress={() => this.addInvoice()} style={styles.orderConfirmButton}>
-					<Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}>Confirm Order</Text>
-				</TouchableOpacity>
-					</View>
+						<Text style={{ fontSize: 20, color: 'white', fontWeight: 'bold' }}>Confirm Order</Text>
+					</TouchableOpacity>
+				</View>
+				)}
+
 				
 			</ScrollView>
 		);
@@ -275,7 +340,7 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		borderRadius: 10,
 		margin: 30,
-		paddingBottom:50
+		paddingBottom: 50
 		// paddingBottom:10
 	},
 	text: {
@@ -315,7 +380,8 @@ const styles = StyleSheet.create({
 		padding: 10,
 		textAlign: 'center',
 		alignItems: 'center',
-		marginBottom:70
+		marginBottom: 70,
+		display: "flex"
 	},
 	centeredView: {
 		flex: 1,
@@ -353,6 +419,11 @@ const styles = StyleSheet.create({
 	modalText: {
 		marginBottom: 15,
 		textAlign: 'center'
+	},
+	paymentStyle:{
+		flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
 	}
 });
 
