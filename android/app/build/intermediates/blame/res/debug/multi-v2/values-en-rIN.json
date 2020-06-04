@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Semester Work\\Seventh Semester\\FYP\\TheWholesaleBazar\\TheWholesaleBazaar - Copy (3)\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
+            "outputFile": "C:\\Users\\k1636\\Desktop\\FYP stuff\\fyp code 02 june\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rIN\\values-en-rIN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Muhammad Yasir Javed\\.gradle\\caches\\transforms-2\\files-2.1\\0fedad34d05b4b4f7e214c583e97ed6e\\res\\values-en-rIN\\values.xml",
+                    "source": "C:\\Users\\k1636\\.gradle\\caches\\transforms-2\\files-2.1\\bd9b72b005d3943b748d7a87aa9e79e8\\res\\values-en-rIN\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Muhammad Yasir Javed\\.gradle\\caches\\transforms-2\\files-2.1\\24932d67f98f410ad1dd3d972159fe96\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "source": "C:\\Users\\k1636\\.gradle\\caches\\transforms-2\\files-2.1\\3efefbb38382adcc5fe7e143be573e59\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Muhammad Yasir Javed\\.gradle\\caches\\transforms-2\\files-2.1\\1e9d95480170b1ef648471780d8c1e76\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "source": "C:\\Users\\k1636\\.gradle\\caches\\transforms-2\\files-2.1\\c7f3e16410b81b50d78b585b0ce4d30d\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

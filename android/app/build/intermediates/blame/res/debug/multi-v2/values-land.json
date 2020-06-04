@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Semester Work\\Seventh Semester\\FYP\\TheWholesaleBazar\\TheWholesaleBazaar - Copy (3)\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "C:\\Users\\k1636\\Desktop\\FYP stuff\\fyp code 02 june\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Muhammad Yasir Javed\\.gradle\\caches\\transforms-2\\files-2.1\\1e9d95480170b1ef648471780d8c1e76\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\k1636\\.gradle\\caches\\transforms-2\\files-2.1\\c7f3e16410b81b50d78b585b0ce4d30d\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Muhammad Yasir Javed\\.gradle\\caches\\transforms-2\\files-2.1\\ad35e77bd93f3ddac24fb186bf79e215\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\k1636\\.gradle\\caches\\transforms-2\\files-2.1\\452be23ec60ecccd5addb82e26592720\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {StyleSheet, View, Text, Image,TextInput} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
 import jsonItems from '../../../items.json';
 import {TouchableOpacity} from 'react-native';
 // import ad from '../../../images/';
 import firebase from '../../config/firebase';
+import Icon from 'react-native-vector-icons/FontAwesome'
+
 
 export default class ViewProducts extends Component {
   state = {
+    searchVal:"",
     products: [],
     imUrl: '',
+    filterProducts:[]
   };
    readUserData() {
 
@@ -45,7 +49,7 @@ export default class ViewProducts extends Component {
         }
         console.log('==============');
         console.log(products);
-        this.setState({products: products});
+        this.setState({products: products,filterProducts:products});
         // return products;
         console.log(this.state.products)
       },error=>{
@@ -55,12 +59,33 @@ export default class ViewProducts extends Component {
   componentWillMount() {
     this.readUserData();
   }
+  Search=(text)=>{
+    var fp=[];
+    var products=this.state.products;
+    for(var i in products){
+      if(products[i].name.includes(text)){
+        fp.push(products[i])
+      }
+    }
+    this.setState({filterProducts:fp})
+  }
 
   render() {
     return (
+
+      <View style={{flex:1}}>
+        <View style={{flexDirection:'row'}}>
+        <Icon  name="search" size={25} style={{paddingTop:10}}/>
+              <TextInput
+      placeholder="Search for product"
+      value={this.state.filterProducts}
+      onChangeText={(filterProducts)=>this.Search(filterProducts)}
+      
+    ></TextInput>
+    </View>
       <FlatGrid
         itemDimension={150}
-        items={this.state.products}
+        items={this.state.filterProducts}
         style={styles.gridView}
         // staticDimension={300}
         // fixed
@@ -89,8 +114,12 @@ export default class ViewProducts extends Component {
 
             </View>
           </TouchableOpacity>
+           
         )}
       />
+            </View>
+
+      
     );
   }
 }

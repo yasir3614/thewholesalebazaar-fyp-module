@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Semester Work\\Seventh Semester\\FYP\\TheWholesaleBazar\\TheWholesaleBazaar - Copy (3)\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
+            "outputFile": "C:\\Users\\k1636\\Desktop\\FYP stuff\\fyp code 02 june\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Muhammad Yasir Javed\\.gradle\\caches\\transforms-2\\files-2.1\\1e9d95480170b1ef648471780d8c1e76\\res\\values-v17\\values-v17.xml",
+                    "source": "C:\\Users\\k1636\\.gradle\\caches\\transforms-2\\files-2.1\\c7f3e16410b81b50d78b585b0ce4d30d\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -31,13 +31,13 @@ const homeStack=createStackNavigator({
     ProductDetail:{
       screen:ProductDetailScreen,
       navigationOptions:{
-        headerTitle:"back button product name"
+        headerTitle:"Product Detail"
       }
     },
     ProductCheckout:{
         screen:ProductCheckoutScreen,
         navigationOptions:{
-          headerTitle:"back button product name"
+          headerTitle:"Product Checkout"
         }
       },
     OrderDetail:{
@@ -50,13 +50,13 @@ const homeStack=createStackNavigator({
     ProductCart:{
         screen:ProductCartScreen,
         navigationOptions:{
-          headerTitle:"back button product name"
+          headerTitle:"Cart"
         }
       },
     Chat:{
         screen:ChatScreen,
         navigationOptions:{
-            headerTitle:"back button product name"
+            headerTitle:"Chat"
         },
       },
     Search:{

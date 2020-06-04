@@ -31,9 +31,9 @@ class MainScreen extends Component {
       headerTitle: <Logo />,
       headerRight: (
         <View>
-          <TouchableOpacity style={{marginRight:20,width:"100%"}}onPress={() => navigation.navigate('Search')}>
+          {/* <TouchableOpacity style={{marginRight:20,width:"100%"}}onPress={() => navigation.navigate('Search')}>
           <Icon  name="search" size={35}/>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       ),
     };;

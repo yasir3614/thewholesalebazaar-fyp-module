@@ -39,7 +39,7 @@ const AuthStack = createStackNavigator({
     Landing: {
       screen: LandingScreen,
       navigationOptions: {
-        headerTitle: 'Landing',
+        headerTitle: 'My Profile',
       },
     },
     

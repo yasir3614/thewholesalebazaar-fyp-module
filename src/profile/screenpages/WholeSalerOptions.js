@@ -97,7 +97,7 @@ class WholeSalerOptions extends Component {
                     {/* <Text style={styles.paymentOption}>My Products </Text> */}
 
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('AddShopDetails')} style={{ marginLeft: "30%", width: "50%" }}>
-                        <Text style={styles.viewProduct}>Add or Update Shop Details</Text>
+                        <Text style={styles.viewProduct}>Update Shop Details</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('WholeSalerProducts')} style={{ marginLeft: "30%", width: "50%" }}>
                         <Text style={styles.viewProduct}>View My Products</Text>
@@ -107,9 +107,9 @@ class WholeSalerOptions extends Component {
                         <Text style={styles.viewProduct}>My Sales</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('WholeSalerSales')} style={{ marginLeft: "30%", width: "50%" }}>
+                    {/* <TouchableOpacity onPress={() => this.props.navigation.navigate('WholeSalerSales')} style={{ marginLeft: "30%", width: "50%" }}>
                         <Text style={styles.viewProduct}>My Clients</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     {/*  this.props.navigation.navigate('ViewProductsScheduledWholeSaler')}  */}
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('ViewProductsScheduledWholeSaler')} style={{ marginLeft: "30%", width: "50%" }}>
                         <Text style={styles.viewProduct}>Schedules</Text>

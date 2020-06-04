@@ -1,4 +1,4 @@
-#Wed May 20 13:11:59 PKT 2020
-base.0=D\:\\Semester Work\\Seventh Semester\\FYP\\TheWholesaleBazar\\TheWholesaleBazaar - Copy (3)\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Wed Jun 03 23:57:49 PKT 2020
+base.0=C\:\\Users\\k1636\\Desktop\\FYP stuff\\fyp code 02 june\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex
