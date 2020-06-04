@@ -50,7 +50,7 @@ export default class AddShopDetails extends Component {
 	};
 	componentWillMount = async () => {
 		// this.RemoveSession();
-		console.log('---------???-componrt will mount ttt');
+		// console.log('---------???-componrt will mount ttt');
 		await this.checkLoggedin();
 		await this.getOrdersOfWholesaler();
 	};
@@ -59,15 +59,14 @@ export default class AddShopDetails extends Component {
 	}
 
 	getOrdersOfWholesaler = async () => {
-		console.log('checl' + this.state.userLoggedIn);
+		// console.log('checl' + this.state.userLoggedIn);
 
 		await fetch(api + '/order/' + this.state.userLoggedIn)
 			.then((response) => response.text())
 			.then((responseJson) => {
-				console.log('--namoona------------------------');
 				// console.log(responseJson);
 				var res = JSON.parse(responseJson);
-				console.log(res);
+				// console.log(res);
 
 				var analytics = {
 					'1': 0,
@@ -88,7 +87,7 @@ export default class AddShopDetails extends Component {
 				var totalpriceProduct = {};
 				for (var order in res) {
 					var date = new Date(res[order]['orderDate']);
-					console.log(date.getMonth() + 1);
+					// console.log(date.getMonth() + 1);
 					totalRevenue += res[order]['totalprice'];
 
 					if (res[order]['productid'] in totalpriceProduct) {
@@ -99,7 +98,7 @@ export default class AddShopDetails extends Component {
 						totalpriceProduct[res[order]['productid']]['totalPrice'] = res[order]['totalprice'];
 					}
 					analytics[date.getMonth() + 1] += 1;
-					console.log(analytics);
+					// console.log(analytics);
 					status[res[order]['status']] += 1;
 				}
 				// var totalpriceProductGraph=this.state.totalpriceProductGraph;
@@ -138,12 +137,12 @@ export default class AddShopDetails extends Component {
 				this.setState({
 					userLoggedIn: value
 				});
-				console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2');
-				console.log(this.state.userLoggedIn);
-				console.log('logged in inside cartLOGGED IN');
+				// console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2');
+				// console.log(this.state.userLoggedIn);
+				// console.log('logged in inside cartLOGGED IN');
 				// alert("user is logged in")
 			} else {
-				console.log('NOT LOGGED IN');
+				// console.log('NOT LOGGED IN');
 				// alert("user is not logged in in cart");
 			}
 		} catch (error) {
@@ -239,7 +238,7 @@ export default class AddShopDetails extends Component {
 
 							 {/* Loop data  and make accordians, title = product_name, other_one  = total_price */}
 							{
-								console.log(this.state.totalpriceProduct)}{
+								// console.log(this.state.totalpriceProduct)}{
 								Object.keys(this.state.totalpriceProduct).map((key,index)=>{
 									return(
 									// console.log(key["name"])
