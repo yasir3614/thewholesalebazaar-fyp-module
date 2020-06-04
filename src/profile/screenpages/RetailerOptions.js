@@ -61,11 +61,13 @@ class Retailer extends Component {
                         <Text style={styles.name}>{current.username}</Text>
                         <Text style={styles.retailer}>Retailer</Text>
                         </View>
-                        <TouchableOpacity style={{marginLeft:145}} onPress={()=>this.props.logoutUser()} >
+                        <TouchableOpacity  onPress={()=>this.props.logoutUser()} >
                           
                           <Icon  name="arrow-circle-left" color="" size={50}></Icon>
                           <Text>Logout</Text>
+
                       </TouchableOpacity>
+
                         </View>
                     </ImageBackground>
 
