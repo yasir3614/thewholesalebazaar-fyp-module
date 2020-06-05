@@ -4,7 +4,7 @@ import {View, Text, TouchableOpacity,StyleSheet} from 'react-native';
 import Connections from './Components/Connections';
 import ClearStock from './Components/ClearStock';
 import NewProducts from './Components/NewProducts';
-import Discounts from './Components/Discounts';
+import Recomendation from './Components/Recomendation';
 import CustomButton from './Components/CustomButton';
 import { ScrollView } from 'react-native';
 
@@ -32,9 +32,9 @@ export default class NewsFeed extends Component {
           
           <CustomButton
               style={styles.btnStyle}         
-            onPress={() => this.buttonClick('Discounts')}
+            onPress={() => this.buttonClick('Recomendation')}
             iconName="home" >
-            Discounts
+            Recomendation
           </CustomButton>
 
           <CustomButton
@@ -56,8 +56,8 @@ export default class NewsFeed extends Component {
         <ScrollView style={{width:"100%",flex:1}}>
           {this.state.selected === 'ClearStock' ? (
             <ClearStock />
-          ) : this.state.selected === 'Discounts' ? (
-            <Discounts />
+          ) : this.state.selected === 'Recomendation' ? (
+            <Recomendation />
           ) : this.state.selected === 'NewProducts' ? (
             <NewProducts />
           ) : (

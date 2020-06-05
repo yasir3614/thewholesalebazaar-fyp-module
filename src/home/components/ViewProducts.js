@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class ViewProducts extends Component {
   state = {
+    recomended:false,
     searchVal:"",
     products: [],
     imUrl: '',
@@ -42,7 +43,9 @@ export default class ViewProducts extends Component {
             price: x[i].price,
             quantity: x[i].quantity,
             wholesalerId: x[i].wholesalerId,
-            dateProductAddedIn:x[i].dateProductAddedIn
+            dateProductAddedIn:x[i].dateProductAddedIn,
+            sentiment: x[i].sentiment ?  ( x[i].sentiment ): 0
+
           };
           products.push(temp);
           console.log(temp);
@@ -69,12 +72,42 @@ export default class ViewProducts extends Component {
     }
     this.setState({filterProducts:fp})
   }
+ compare=( a, b )=> {
+    if ( a.sentiment < b.sentiment ){
+      return -1;
+    }
+    if ( a.sentiment > b.sentiment ){
+      return 1;
+    }
+    return 0;
+  }
+  
+  recomendation=()=>{
+
+    this.setState({recomended:!this.state.recomended})
+    if(!this.state.recomended){
+      var fp=[];
+      var products=this.state.products;
+      for(var i in products){
+        if(products[i].sentiment>0){
+          fp.push(products[i])
+        }
+      }
+      fp.sort( this.compare );
+  
+      this.setState({filterProducts:fp})
+   
+    }else{
+      this.setState({filterProducts:this.state.products})
+   
+    }
+  }
 
   render() {
     return (
 
-      <View style={{flex:1}}>
-        <View style={{flexDirection:'row'}}>
+      <View style={{flex:1,marginTop:10}}>
+        <View style={{padding:5,flexDirection:'row',marginLeft:10,marginRight:10,borderRadius:100,borderWidth:3,borderColor:"black"}}>
         <Icon  name="search" size={25} style={{paddingTop:10}}/>
               <TextInput
       placeholder="Search for product"
@@ -82,7 +115,18 @@ export default class ViewProducts extends Component {
       onChangeText={(filterProducts)=>this.Search(filterProducts)}
       
     ></TextInput>
+
     </View>
+    <View style={{padding:5}}>
+        <TouchableOpacity
+            onPress={()=>this.recomendation()}
+            style={[{ padding:5}, this.state.recomended ? ({backgroundColor:'white'}):({backgroundColor:'white'})]}
+          >
+    
+    <Text style={{textAlign:"center",color:'gray',fontSize:25}}>{this.state.recomended ? ("<Back"):("Recomendations >")} </Text>
+          </TouchableOpacity>
+      </View>
+
       <FlatGrid
         itemDimension={150}
         items={this.state.filterProducts}
@@ -110,6 +154,10 @@ export default class ViewProducts extends Component {
               {/* {console.log(item.productImg)} */}
               <Text style={styles.itemName}>{item.name}</Text>
               <Text style={styles.itemCode}>Rs. {item.price}</Text>
+              {/* {this.state.recomended ? (
+                <Text style={styles.itemCode}>Response Value :{item.sentiment}</Text>
+              ):(null)} */}
+
               {/* <Text style={styles.itemCode}>Rs. {item.productId}</Text> */}
 
             </View>
